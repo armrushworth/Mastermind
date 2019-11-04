@@ -8,32 +8,50 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var inputSelection: UIView!
     @IBOutlet weak var firstSelection: UIImageView!
     @IBOutlet weak var secondSelection: UIImageView!
     @IBOutlet weak var thirdSelection: UIImageView!
     @IBOutlet weak var fourthSelection: UIImageView!
+    
     @IBAction func blueCircle(_ sender: Any) {
     }
+    
     @IBAction func greenCircle(_ sender: Any) {
     }
+    
     @IBAction func greyCircle(_ sender: Any) {
     }
+    
     @IBAction func orangeCircle(_ sender: Any) {
     }
+    
     @IBAction func redCircle(_ sender: Any) {
     }
+    
     @IBAction func yellowCirlce(_ sender: Any) {
     }
+    
     @IBAction func backButton(_ sender: Any) {
     }
+    
     @IBAction func goButton(_ sender: Any) {
     }
+    
     override func viewDidLoad() {
         inputSelection.layer.borderWidth = 1
         inputSelection.layer.borderColor = UIColor.separator.cgColor
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "tableCell")
+        cell.textLabel?.text = "Hello"
+        return cell
     }
 }
 
