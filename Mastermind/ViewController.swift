@@ -9,13 +9,21 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    var selectionArray = [String]()
+    
     @IBOutlet weak var inputSelection: UIView!
     @IBOutlet weak var firstSelection: UIImageView!
     @IBOutlet weak var secondSelection: UIImageView!
     @IBOutlet weak var thirdSelection: UIImageView!
     @IBOutlet weak var fourthSelection: UIImageView!
-    
-    var selectionArray = [String]()
+    @IBOutlet weak var blueCircle: UIButton!
+    @IBOutlet weak var greenCircle: UIButton!
+    @IBOutlet weak var greyCircle: UIButton!
+    @IBOutlet weak var orangeCircle: UIButton!
+    @IBOutlet weak var redCircle: UIButton!
+    @IBOutlet weak var yellowCircle: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var goButton: UIButton!
     
     @IBAction func blueCircle(_ sender: Any) {
         selectionArray.append("blue")
@@ -47,12 +55,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         updateInputSelection(delete: false)
     }
     
-    @IBAction func backButton(_ sender: Any) {
-        updateInputSelection(delete: true)
+    @IBAction func deleteButton(_ sender: Any) {
         selectionArray.removeLast()
+        updateInputSelection(delete: true)
     }
     
     @IBAction func goButton(_ sender: Any) {
+        selectionArray.removeAll()
+        firstSelection.image = nil
+        secondSelection.image = nil
+        thirdSelection.image = nil
+        fourthSelection.image = nil
+        updateButtonStates()
     }
     
     override func viewDidLoad() {
@@ -71,7 +85,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func updateInputSelection(delete: Bool) {
-        let selectionCount = selectionArray.count
+        let selectionCount = delete ? selectionArray.count + 1 : selectionArray.count
         switch selectionCount {
             case 1:
                 firstSelection.image = delete ? nil : UIImage(named: selectionArray[selectionCount - 1])
@@ -81,6 +95,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 thirdSelection.image = delete ? nil : UIImage(named: selectionArray[selectionCount - 1])
             default:
                 fourthSelection.image = delete ? nil : UIImage(named: selectionArray[selectionCount - 1])
+        }
+        updateButtonStates()
+    }
+    
+    func updateButtonStates() {
+        deleteButton.isEnabled = selectionArray.count == 0 ? false : true
+        
+        if (selectionArray.count >= 4) {
+            blueCircle.isEnabled = false
+            greenCircle.isEnabled = false
+            greyCircle.isEnabled = false
+            orangeCircle.isEnabled = false
+            yellowCircle.isEnabled = false
+            redCircle.isEnabled = false
+            goButton.isEnabled = true
+        } else {
+            blueCircle.isEnabled = true
+            greenCircle.isEnabled = true
+            greyCircle.isEnabled = true
+            orangeCircle.isEnabled = true
+            yellowCircle.isEnabled = true
+            redCircle.isEnabled = true
+            goButton.isEnabled = false
         }
     }
 }

@@ -34,7 +34,7 @@
                                                     <constraint firstAttribute="width" constant="1" id="UVS-Ya-cTR"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cv2-Kn-bbH">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cv2-Kn-bbH">
                                                 <rect key="frame" x="295" y="100" width="60" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="EX5-Ws-QYw"/>
@@ -112,7 +112,7 @@
                                                     <action selector="yellowCirlce:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Gs-mc-0kS"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6b-yx-hdd">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b6b-yx-hdd">
                                                 <rect key="frame" x="295" y="21" width="60" height="57.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="YTQ-81-wtO"/>
@@ -120,7 +120,7 @@
                                                 </constraints>
                                                 <state key="normal" backgroundImage="delete.left" catalog="system"/>
                                                 <connections>
-                                                    <action selector="backButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t5I-Ax-8fb"/>
+                                                    <action selector="deleteButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1fw-dr-P08"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -240,11 +240,19 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="blueCircle" destination="O70-r7-1NF" id="fnY-4J-Yqc"/>
+                        <outlet property="deleteButton" destination="b6b-yx-hdd" id="aCD-zA-wkw"/>
                         <outlet property="firstSelection" destination="rwf-Cx-Ccg" id="Rnb-iA-m0X"/>
                         <outlet property="fourthSelection" destination="0hf-bN-mQn" id="tAW-R4-m8g"/>
+                        <outlet property="goButton" destination="cv2-Kn-bbH" id="npO-q3-9cK"/>
+                        <outlet property="greenCircle" destination="fAY-2w-g3Q" id="2U8-09-nv2"/>
+                        <outlet property="greyCircle" destination="ZoD-en-NEz" id="lMM-6H-cjS"/>
                         <outlet property="inputSelection" destination="Nhw-ub-LYd" id="DId-E1-P8m"/>
+                        <outlet property="orangeCircle" destination="Y95-Bx-2nh" id="d9N-AQ-vaA"/>
+                        <outlet property="redCircle" destination="jBj-ok-Eft" id="DoL-yv-lPh"/>
                         <outlet property="secondSelection" destination="Ukx-e4-ncF" id="8Ct-Uu-UrV"/>
                         <outlet property="thirdSelection" destination="eao-CN-2uZ" id="cWn-Dp-QQn"/>
+                        <outlet property="yellowCircle" destination="wWj-u3-D8b" id="2ug-XD-HiW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
