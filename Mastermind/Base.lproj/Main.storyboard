@@ -14,13 +14,30 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lCl-ZY-7ls">
+                                <rect key="frame" x="0.0" y="467" width="375" height="200"/>
+                                <color key="backgroundColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="2te-3x-7j0"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="lCl-ZY-7ls" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="8z0-g9-wdn"/>
+                            <constraint firstItem="lCl-ZY-7ls" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="atp-p5-1Rs"/>
+                            <constraint firstItem="lCl-ZY-7ls" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fwX-gN-AgY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="keyboardViewHeight" destination="2te-3x-7j0" id="0SX-m1-VvW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="139"/>
+            <point key="canvasLocation" x="132" y="138.98050974512745"/>
         </scene>
     </scenes>
 </document>
