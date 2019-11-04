@@ -10,22 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var keyboardViewHeight: NSLayoutConstraint!
-    
+    @IBOutlet weak var inputSelection: UIView!
     override func viewDidLoad() {
-        NotificationCenter.default.addObserver(self, selector: #selector(orientationChanged), name:  Notification.Name("UIDeviceOrientationDidChangeNotification"), object: nil)
-        super.viewDidLoad()
-        setWidth()
-    }
-    
-    @objc func orientationChanged() {
-        setWidth()
-    }
-    
-    func setWidth() {
-        let screenRect = UIScreen.main.bounds
-        let screenWidth = screenRect.size.width
-        keyboardViewHeight.constant = screenWidth > 400 ? 100 : 200
+        inputSelection.layer.borderWidth = 1
+        inputSelection.layer.borderColor = UIColor.separator.cgColor
     }
 }
 
