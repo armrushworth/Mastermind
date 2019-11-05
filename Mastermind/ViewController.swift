@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var selectionArray = [String]()
+    var guesses = [[String]]()
     
     @IBOutlet weak var inputSelection: UIView!
     @IBOutlet weak var firstSelection: UIImageView!
@@ -24,6 +25,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var yellowCircle: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var goButton: UIButton!
+    @IBOutlet weak var outputTable: UITableView!
     
     @IBAction func blueCircle(_ sender: Any) {
         selectionArray.append("blue")
@@ -61,6 +63,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func goButton(_ sender: Any) {
+        guesses.append(selectionArray)
+        outputTable.reloadData()
         selectionArray.removeAll()
         firstSelection.image = nil
         secondSelection.image = nil
@@ -75,12 +79,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return guesses.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "tableCell")
-        cell.textLabel?.text = "Hello"
+        let guess = guesses[indexPath.row]
+        
+        for i in 0 ..< guess.count {
+            let imageView = UIImageView(frame: CGRect(x: i * 48 + 16, y: 2, width: 40, height: 40))
+            imageView.image = UIImage(named: guess[i])
+            cell.contentView.addSubview(imageView)
+        }
+        
         return cell
     }
     

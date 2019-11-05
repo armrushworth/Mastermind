@@ -249,6 +249,7 @@
                         <outlet property="greyCircle" destination="ZoD-en-NEz" id="lMM-6H-cjS"/>
                         <outlet property="inputSelection" destination="Nhw-ub-LYd" id="DId-E1-P8m"/>
                         <outlet property="orangeCircle" destination="Y95-Bx-2nh" id="d9N-AQ-vaA"/>
+                        <outlet property="outputTable" destination="GPf-lX-88a" id="0bh-nL-hMC"/>
                         <outlet property="redCircle" destination="jBj-ok-Eft" id="DoL-yv-lPh"/>
                         <outlet property="secondSelection" destination="Ukx-e4-ncF" id="8Ct-Uu-UrV"/>
                         <outlet property="thirdSelection" destination="eao-CN-2uZ" id="cWn-Dp-QQn"/>
