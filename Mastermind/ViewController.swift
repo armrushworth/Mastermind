@@ -12,7 +12,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var generatedPattern = [String]()
     var selectionArray = [String]()
     var guesses = [[String]]()
-    var feedback = [[Int]](repeating: [Int](repeating: 0, count: 2), count: 10)
+    var feedback = [[Int]]()
     
     @IBOutlet weak var inputSelection: UIView!
     @IBOutlet weak var firstSelection: UIImageView!
@@ -92,10 +92,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "tableCell")
         let guess = guesses[indexPath.row]
+        var blobs = [String]()
         
+        // display colours guessed
         for i in 0 ..< guess.count {
             let imageView = UIImageView(frame: CGRect(x: i * 48 + 16, y: 2, width: 40, height: 40))
             imageView.image = UIImage(named: guess[i])
+            cell.contentView.addSubview(imageView)
+        }
+        
+        // populate array with correct feedback blobs
+        for _ in 0 ..< feedback[indexPath.row][0] {
+            blobs.append("blobBlack")
+        }
+        for _ in 0 ..< feedback[indexPath.row][1] - feedback[indexPath.row][0] {
+            blobs.append("blobWhite")
+        }
+        
+        // display feedback blobs
+        for i in 0 ..< blobs.count {
+            let imageView = UIImageView(frame: CGRect(x: i / 2 * 18 + 208, y: i % 2 * 18 + 2, width: 20, height: 20))
+            imageView.image = UIImage(named: blobs[i])
             cell.contentView.addSubview(imageView)
         }
         

@@ -15,12 +15,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gW-Wk-Dm0">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <items>
-                                    <navigationItem title="Mastermind" id="VA2-Xe-dOC"/>
-                                </items>
-                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GPf-lX-88a">
+                                <rect key="frame" x="0.0" y="44" width="375" height="363"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="rvj-TH-iCE"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" id="XUB-C7-wwt">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XUB-C7-wwt" id="9cK-kV-oUx">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="cpf-0e-vqq"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="UHW-pY-9fx"/>
+                                </connections>
+                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mPD-cv-x9q">
                                 <rect key="frame" x="0.0" y="407" width="375" height="260"/>
                                 <subviews>
@@ -205,37 +220,24 @@
                                     <constraint firstAttribute="bottom" secondItem="8fj-5i-Y90" secondAttribute="bottom" id="x01-zv-Cox"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GPf-lX-88a">
-                                <rect key="frame" x="0.0" y="44" width="375" height="363"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" id="XUB-C7-wwt">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XUB-C7-wwt" id="9cK-kV-oUx">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="cpf-0e-vqq"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="UHW-pY-9fx"/>
-                                </connections>
-                            </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gW-Wk-Dm0">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Mastermind" id="VA2-Xe-dOC"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="mPD-cv-x9q" firstAttribute="top" secondItem="GPf-lX-88a" secondAttribute="bottom" id="0FW-dk-bCu"/>
                             <constraint firstItem="0gW-Wk-Dm0" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="7xb-eK-c9g"/>
+                            <constraint firstItem="GPf-lX-88a" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="C5H-jz-IIn"/>
                             <constraint firstItem="0gW-Wk-Dm0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Goa-6f-W7l"/>
                             <constraint firstItem="0gW-Wk-Dm0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cpf-jt-UvO"/>
-                            <constraint firstItem="GPf-lX-88a" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="de2-CD-xn9"/>
                             <constraint firstItem="mPD-cv-x9q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dnJ-GN-TBX"/>
                             <constraint firstItem="mPD-cv-x9q" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="lIE-tL-qRq"/>
                             <constraint firstItem="mPD-cv-x9q" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="sqQ-ys-BeI"/>
                             <constraint firstItem="GPf-lX-88a" firstAttribute="top" secondItem="0gW-Wk-Dm0" secondAttribute="bottom" id="tJ6-vH-YVm"/>
-                            <constraint firstItem="GPf-lX-88a" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="y83-vA-KxB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
