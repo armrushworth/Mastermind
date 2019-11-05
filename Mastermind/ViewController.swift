@@ -65,21 +65,32 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func goButton(_ sender: Any) {
+        // add selection to guesses
         guesses.append(selectionArray)
-        outputTable.reloadData()
-        checkGuess()
         selectionArray.removeAll()
+        
+        // reset user input area
         firstSelection.image = nil
         secondSelection.image = nil
         thirdSelection.image = nil
         fourthSelection.image = nil
         updateButtonStates()
+        
+        if (checkGuess()) {
+            let alert = UIAlertController(title: "Congratulations", message: "You guessed the pattern after x attempts.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "New Game", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        } else {
+            outputTable.reloadData()
+            // increment count
+        }
+        
     }
     
     override func viewDidLoad() {
         inputSelection.layer.borderWidth = 1
         inputSelection.layer.borderColor = UIColor.separator.cgColor
-        generatePattern()
+        newGame()
         for i in 0 ..< generatedPattern.count {
             print(generatedPattern[i])
         }
@@ -115,12 +126,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             imageView.image = UIImage(named: blobs[i])
             cell.contentView.addSubview(imageView)
         }
-        
         return cell
     }
     
-    func generatePattern() {
+    func newGame() {
         let colours = ["blue", "green", "grey", "orange", "red", "yellow"]
+        
+        // clear arrays and table
+        generatedPattern.removeAll()
+        guesses.removeAll()
+        feedback.removeAll()
+        outputTable.reloadData()
         
         // generate pattern of 4 colours
         for _ in 0 ... 3 {
@@ -171,8 +187,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func checkGuess() -> Bool {
+        let guess = guesses[guesses.count - 1]
+        
         // return true if all colours are in the correct position
-        if (generatedPattern.elementsEqual(selectionArray)) {
+        if (generatedPattern.elementsEqual(guess)) {
             return true
             
         } else {
@@ -181,13 +199,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             var correctPositionsCount = 0
             var correctColoursCount = 0
             
-            for i in 0 ..< selectionArray.count {
+            for i in 0 ..< guess.count {
                 // count the number of each colour in generatedPattern and selectionArray
                 generatedColoursCount[generatedPattern[i]] = (generatedColoursCount[generatedPattern[i]] ?? 0) + 1
-                guessedColoursCount[selectionArray[i]] = (guessedColoursCount[selectionArray[i]] ?? 0) + 1
+                guessedColoursCount[guess[i]] = (guessedColoursCount[guess[i]] ?? 0) + 1
                 
                 // count the number of colours in the correct position
-                if (selectionArray[i] == generatedPattern[i]) {
+                if (guess[i] == generatedPattern[i]) {
                     correctPositionsCount += 1
                 }
             }
