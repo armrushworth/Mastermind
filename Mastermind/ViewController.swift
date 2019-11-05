@@ -9,8 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    var generatedPattern = [String]()
     var selectionArray = [String]()
     var guesses = [[String]]()
+    var feedback = [[Int]](repeating: [Int](repeating: 0, count: 2), count: 10)
     
     @IBOutlet weak var inputSelection: UIView!
     @IBOutlet weak var firstSelection: UIImageView!
@@ -65,6 +67,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func goButton(_ sender: Any) {
         guesses.append(selectionArray)
         outputTable.reloadData()
+        checkGuess()
         selectionArray.removeAll()
         firstSelection.image = nil
         secondSelection.image = nil
@@ -76,6 +79,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         inputSelection.layer.borderWidth = 1
         inputSelection.layer.borderColor = UIColor.separator.cgColor
+        generatePattern()
+        for i in 0 ..< generatedPattern.count {
+            print(generatedPattern[i])
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -93,6 +100,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         return cell
+    }
+    
+    func generatePattern() {
+        let colours = ["blue", "green", "grey", "orange", "red", "yellow"]
+        for _ in 0 ... 3 {
+            generatedPattern.append(colours.randomElement()!)
+        }
     }
     
     func updateInputSelection(delete: Bool) {
@@ -130,6 +144,35 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             redCircle.isEnabled = true
             goButton.isEnabled = false
         }
+    }
+    
+    func checkGuess() -> Bool {
+        // return true if all colours are in the correct position
+        if (generatedPattern.elementsEqual(selectionArray)) {
+            return true
+            
+        } else {
+            var generatedCounts: [String: Int] = [:]
+            var guessCounts: [String: Int] = [:]
+      
+            for i in 0 ... 3 {
+                generatedCounts[generatedPattern[i]] = (generatedCounts[generatedPattern[i]] ?? 0) + 1
+                guessCounts[selectionArray[i]] = (guessCounts[selectionArray[i]] ?? 0) + 1
+            }
+            
+            var colourExistsCount = 0
+            for (key, value) in guessCounts {
+                if ((generatedCounts[key]) != nil) {
+                    if (value > generatedCounts[key]!) {
+                        colourExistsCount += generatedCounts[key]!
+                    } else {
+                        colourExistsCount += value
+                    }
+                }
+            }
+    
+        }
+        return false
     }
 }
 
