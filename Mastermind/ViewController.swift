@@ -96,7 +96,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         // display colours guessed
         for i in 0 ..< guess.count {
-            let imageView = UIImageView(frame: CGRect(x: i * 48 + 16, y: 2, width: 40, height: 40))
+            let imageView = UIImageView(frame: CGRect(x: i * 48 + 74, y: 2, width: 40, height: 40))
             imageView.image = UIImage(named: guess[i])
             cell.contentView.addSubview(imageView)
         }
@@ -111,7 +111,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         // display feedback blobs
         for i in 0 ..< blobs.count {
-            let imageView = UIImageView(frame: CGRect(x: i / 2 * 18 + 208, y: i % 2 * 18 + 2, width: 20, height: 20))
+            let imageView = UIImageView(frame: CGRect(x: i / 2 * 18 + 266, y: i % 2 * 18 + 2, width: 20, height: 20))
             imageView.image = UIImage(named: blobs[i])
             cell.contentView.addSubview(imageView)
         }
