@@ -104,13 +104,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func generatePattern() {
         let colours = ["blue", "green", "grey", "orange", "red", "yellow"]
+        
+        // generate pattern of 4 colours
         for _ in 0 ... 3 {
             generatedPattern.append(colours.randomElement()!)
         }
     }
     
     func updateInputSelection(delete: Bool) {
+        // get input selection to delete or update
         let selectionCount = delete ? selectionArray.count + 1 : selectionArray.count
+        
+        // delete or update input selection image
         switch selectionCount {
             case 1:
                 firstSelection.image = delete ? nil : UIImage(named: selectionArray[selectionCount - 1])
@@ -125,8 +130,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func updateButtonStates() {
+        // enable delete button if there are colours selected
         deleteButton.isEnabled = selectionArray.count == 0 ? false : true
         
+        // disable colour buttons and enable go button if 4 colours have been selected
         if (selectionArray.count >= 4) {
             blueCircle.isEnabled = false
             greenCircle.isEnabled = false
@@ -152,25 +159,35 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return true
             
         } else {
-            var generatedCounts: [String: Int] = [:]
-            var guessCounts: [String: Int] = [:]
-      
-            for i in 0 ... 3 {
-                generatedCounts[generatedPattern[i]] = (generatedCounts[generatedPattern[i]] ?? 0) + 1
-                guessCounts[selectionArray[i]] = (guessCounts[selectionArray[i]] ?? 0) + 1
+            var generatedColoursCount: [String: Int] = [:]
+            var guessedColoursCount: [String: Int] = [:]
+            var correctPositionsCount = 0
+            var correctColoursCount = 0
+            
+            for i in 0 ..< selectionArray.count {
+                // count the number of each colour in generatedPattern and selectionArray
+                generatedColoursCount[generatedPattern[i]] = (generatedColoursCount[generatedPattern[i]] ?? 0) + 1
+                guessedColoursCount[selectionArray[i]] = (guessedColoursCount[selectionArray[i]] ?? 0) + 1
+                
+                // count the number of colours in the correct position
+                if (selectionArray[i] == generatedPattern[i]) {
+                    correctPositionsCount += 1
+                }
             }
             
-            var colourExistsCount = 0
-            for (key, value) in guessCounts {
-                if ((generatedCounts[key]) != nil) {
-                    if (value > generatedCounts[key]!) {
-                        colourExistsCount += generatedCounts[key]!
+            // count the number of colours guessed correctly regardless of position
+            for (key, value) in guessedColoursCount {
+                if (generatedColoursCount[key] != nil) {
+                    if (value > generatedColoursCount[key]!) {
+                        correctColoursCount += generatedColoursCount[key]!
                     } else {
-                        colourExistsCount += value
+                        correctColoursCount += value
                     }
                 }
             }
-    
+            
+            // append feedback onto array
+            feedback.append([correctPositionsCount, correctColoursCount])
         }
         return false
     }
