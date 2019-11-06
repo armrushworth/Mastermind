@@ -68,6 +68,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // add selection to guesses
         guesses.append(selectionArray)
         selectionArray.removeAll()
+        outputTable.reloadData()
+        scrollToBottom()
         
         // reset user input area
         firstSelection.image = nil
@@ -77,23 +79,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         updateButtonStates()
         
         if (checkGuess()) {
-            let alert = UIAlertController(title: "Congratulations", message: "You guessed the pattern after x attempts.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "New Game", style: .default, handler: nil))
+            // display congratulations alert if the genereated pattern was guessed correctly
+            let alert = UIAlertController(title: "Congratulations", message: "You guessed the pattern after \(guesses.count) attempts.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "New Game", style: .default, handler: { action in self.newGame() }))
             self.present(alert, animated: true)
         } else {
-            outputTable.reloadData()
-            // increment count
+            // display unlucky alert if 10 or more incorrect guesses have been made
+            if (guesses.count >= 10) {
+                let alert = UIAlertController(title: "Unlucky", message: "You have run out of guesses.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+                alert.addAction(UIAlertAction(title: "New Game", style: .default, handler: { action in self.newGame() }))
+                self.present(alert, animated: true)
+            }
         }
-        
     }
     
     override func viewDidLoad() {
         inputSelection.layer.borderWidth = 1
         inputSelection.layer.borderColor = UIColor.separator.cgColor
         newGame()
-        for i in 0 ..< generatedPattern.count {
-            print(generatedPattern[i])
-        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -141,6 +146,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // generate pattern of 4 colours
         for _ in 0 ... 3 {
             generatedPattern.append(colours.randomElement()!)
+        }
+        
+        // print generated pattern to console
+        for i in 0 ..< generatedPattern.count {
+            print(generatedPattern[i])
         }
     }
     
@@ -191,6 +201,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         // return true if all colours are in the correct position
         if (generatedPattern.elementsEqual(guess)) {
+            feedback.append([4, 4])
             return true
             
         } else {
@@ -225,6 +236,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             feedback.append([correctPositionsCount, correctColoursCount])
         }
         return false
+    }
+    
+    func scrollToBottom() {
+        // scrolls to the bottom of outputTable
+        DispatchQueue.main.async {
+            let indexPath = IndexPath(
+                row: self.outputTable.numberOfRows(inSection:  self.outputTable.numberOfSections - 1) - 1,
+                section: self.outputTable.numberOfSections - 1)
+            self.outputTable.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        }
     }
 }
 
