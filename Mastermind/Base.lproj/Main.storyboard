@@ -31,16 +31,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sMr-2X-NgB">
-                                <rect key="frame" x="150" y="318" width="75" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sMr-2X-NgB">
+                                <rect key="frame" x="130" y="606" width="115" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="New Game"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" id="9Od-qP-u6M"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mastermind" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7l-S9-zNo">
+                                <rect key="frame" x="100.5" y="62" width="174" height="41"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iEs-ZS-PQB">
+                                <rect key="frame" x="0.0" y="545" width="375" height="41"/>
+                                <string key="text">Wins: 0
+Losses: 0</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UlL-7z-5uv">
+                                <rect key="frame" x="138.5" y="516" width="98" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="14" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3F-4y-wME">
+                                <rect key="frame" x="37.5" y="111" width="300" height="397"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="397" id="V7L-bo-XTq"/>
+                                    <constraint firstAttribute="width" constant="300" id="jNz-0b-IJQ"/>
+                                </constraints>
+                                <string key="text">The code maker has created a secret code. You may select any combination of 4 coloured circles in order to guess the secret code.
+
+The code maker will use white blobs to indicate each peg that is a correct colour but wrong position, or black blobs to indicate each peg is in a correct position and a right colour. 
+
+You have 10 attempts to guess the secret code.
+</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="y3F-4y-wME" firstAttribute="centerX" secondItem="YL1-SH-lDi" secondAttribute="centerX" id="38Q-VM-Hex"/>
+                            <constraint firstItem="iEs-ZS-PQB" firstAttribute="trailing" secondItem="BRm-1e-rdf" secondAttribute="trailing" id="9sO-85-cRz"/>
+                            <constraint firstItem="y3F-4y-wME" firstAttribute="top" secondItem="e7l-S9-zNo" secondAttribute="bottom" constant="8" id="By0-kp-IzA"/>
+                            <constraint firstItem="sMr-2X-NgB" firstAttribute="top" secondItem="iEs-ZS-PQB" secondAttribute="bottom" constant="20" id="CUc-gH-S6s"/>
+                            <constraint firstItem="sMr-2X-NgB" firstAttribute="centerX" secondItem="YL1-SH-lDi" secondAttribute="centerX" id="IIZ-mQ-UTy"/>
+                            <constraint firstItem="e7l-S9-zNo" firstAttribute="top" secondItem="BRm-1e-rdf" secondAttribute="top" constant="18" id="JLW-n7-5rT"/>
+                            <constraint firstItem="UlL-7z-5uv" firstAttribute="centerX" secondItem="YL1-SH-lDi" secondAttribute="centerX" id="Raq-uA-9dv"/>
+                            <constraint firstItem="BRm-1e-rdf" firstAttribute="bottom" secondItem="sMr-2X-NgB" secondAttribute="bottom" constant="20" id="UpW-lv-b1b"/>
+                            <constraint firstItem="iEs-ZS-PQB" firstAttribute="top" secondItem="UlL-7z-5uv" secondAttribute="bottom" constant="8" id="ViV-CJ-r96"/>
+                            <constraint firstItem="iEs-ZS-PQB" firstAttribute="leading" secondItem="BRm-1e-rdf" secondAttribute="leading" id="fIO-mF-Djo"/>
+                            <constraint firstItem="UlL-7z-5uv" firstAttribute="top" secondItem="y3F-4y-wME" secondAttribute="bottom" constant="8" id="gvj-rL-egt"/>
+                            <constraint firstItem="e7l-S9-zNo" firstAttribute="centerX" secondItem="YL1-SH-lDi" secondAttribute="centerX" id="nWj-rx-tpu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="BRm-1e-rdf"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="dMe-uD-jiz"/>
@@ -50,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4An-rV-bKH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-663" y="139"/>
+            <point key="canvasLocation" x="-663.20000000000005" y="138.98050974512745"/>
         </scene>
         <!--Mastermind-->
         <scene sceneID="tne-QT-ifu">
@@ -100,7 +150,7 @@
                                                     <constraint firstAttribute="width" constant="60" id="EX5-Ws-QYw"/>
                                                     <constraint firstAttribute="height" constant="60" id="jys-rt-aQf"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="47"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="46"/>
                                                 <state key="normal" title="Go"/>
                                                 <connections>
                                                     <action selector="goButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DhL-wL-LxU"/>

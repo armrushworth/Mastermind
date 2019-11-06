@@ -29,36 +29,43 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var goButton: UIButton!
     @IBOutlet weak var outputTable: UITableView!
     
+    // add a blue circle to the input selection
     @IBAction func blueCircle(_ sender: Any) {
         inputSelection.append("blue")
         updateInputSelection(delete: false)
     }
     
+    // add a green circle to the input selection
     @IBAction func greenCircle(_ sender: Any) {
         inputSelection.append("green")
         updateInputSelection(delete: false)
     }
     
+    // add a grey circle to the input selection
     @IBAction func greyCircle(_ sender: Any) {
         inputSelection.append("grey")
         updateInputSelection(delete: false)
     }
     
+    // add a orange circle to the input selection
     @IBAction func orangeCircle(_ sender: Any) {
         inputSelection.append("orange")
         updateInputSelection(delete: false)
     }
     
+    // add a red circle to the input selection
     @IBAction func redCircle(_ sender: Any) {
         inputSelection.append("red")
         updateInputSelection(delete: false)
     }
     
+    // add a yellow circle to the input selection
     @IBAction func yellowCirlce(_ sender: Any) {
         inputSelection.append("yellow")
         updateInputSelection(delete: false)
     }
     
+    // delete the last circle of the input selection
     @IBAction func deleteButton(_ sender: Any) {
         inputSelection.removeLast()
         updateInputSelection(delete: true)
