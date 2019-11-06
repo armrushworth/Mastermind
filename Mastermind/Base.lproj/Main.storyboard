@@ -249,7 +249,7 @@
                         <outlet property="goButton" destination="cv2-Kn-bbH" id="npO-q3-9cK"/>
                         <outlet property="greenCircle" destination="fAY-2w-g3Q" id="2U8-09-nv2"/>
                         <outlet property="greyCircle" destination="ZoD-en-NEz" id="lMM-6H-cjS"/>
-                        <outlet property="inputSelection" destination="Nhw-ub-LYd" id="DId-E1-P8m"/>
+                        <outlet property="inputSelectionView" destination="Nhw-ub-LYd" id="nbg-ln-8uV"/>
                         <outlet property="orangeCircle" destination="Y95-Bx-2nh" id="d9N-AQ-vaA"/>
                         <outlet property="outputTable" destination="GPf-lX-88a" id="0bh-nL-hMC"/>
                         <outlet property="redCircle" destination="jBj-ok-Eft" id="DoL-yv-lPh"/>

@@ -10,11 +10,11 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var generatedPattern = [String]()
-    var selectionArray = [String]()
+    var inputSelection = [String]()
     var guesses = [[String]]()
     var feedback = [[Int]]()
     
-    @IBOutlet weak var inputSelection: UIView!
+    @IBOutlet weak var inputSelectionView: UIView!
     @IBOutlet weak var firstSelection: UIImageView!
     @IBOutlet weak var secondSelection: UIImageView!
     @IBOutlet weak var thirdSelection: UIImageView!
@@ -30,44 +30,44 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var outputTable: UITableView!
     
     @IBAction func blueCircle(_ sender: Any) {
-        selectionArray.append("blue")
+        inputSelection.append("blue")
         updateInputSelection(delete: false)
     }
     
     @IBAction func greenCircle(_ sender: Any) {
-        selectionArray.append("green")
+        inputSelection.append("green")
         updateInputSelection(delete: false)
     }
     
     @IBAction func greyCircle(_ sender: Any) {
-        selectionArray.append("grey")
+        inputSelection.append("grey")
         updateInputSelection(delete: false)
     }
     
     @IBAction func orangeCircle(_ sender: Any) {
-        selectionArray.append("orange")
+        inputSelection.append("orange")
         updateInputSelection(delete: false)
     }
     
     @IBAction func redCircle(_ sender: Any) {
-        selectionArray.append("red")
+        inputSelection.append("red")
         updateInputSelection(delete: false)
     }
     
     @IBAction func yellowCirlce(_ sender: Any) {
-        selectionArray.append("yellow")
+        inputSelection.append("yellow")
         updateInputSelection(delete: false)
     }
     
     @IBAction func deleteButton(_ sender: Any) {
-        selectionArray.removeLast()
+        inputSelection.removeLast()
         updateInputSelection(delete: true)
     }
     
     @IBAction func goButton(_ sender: Any) {
         // add selection to guesses
-        guesses.append(selectionArray)
-        selectionArray.removeAll()
+        guesses.append(inputSelection)
+        inputSelection.removeAll()
         outputTable.reloadData()
         scrollToBottom()
         
@@ -80,24 +80,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if (checkGuess()) {
             // display congratulations alert if the genereated pattern was guessed correctly
-            let alert = UIAlertController(title: "Congratulations", message: "You guessed the pattern after \(guesses.count) attempts.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
-            alert.addAction(UIAlertAction(title: "New Game", style: .default, handler: { action in self.newGame() }))
-            self.present(alert, animated: true)
+            displayAlert(title: "Congratulations", message: "You guessed the pattern after \(guesses.count) attempts.")
         } else {
             // display unlucky alert if 10 or more incorrect guesses have been made
             if (guesses.count >= 10) {
-                let alert = UIAlertController(title: "Unlucky", message: "You have run out of guesses.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
-                alert.addAction(UIAlertAction(title: "New Game", style: .default, handler: { action in self.newGame() }))
-                self.present(alert, animated: true)
+                displayAlert(title: "Unlucky", message: "You have run out of guesses.")
             }
         }
     }
     
     override func viewDidLoad() {
-        inputSelection.layer.borderWidth = 1
-        inputSelection.layer.borderColor = UIColor.separator.cgColor
+        inputSelectionView.layer.borderWidth = 1
+        inputSelectionView.layer.borderColor = UIColor.separator.cgColor
         newGame()
     }
     
@@ -112,7 +106,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         // display colours guessed
         for i in 0 ..< guess.count {
-            let imageView = UIImageView(frame: CGRect(x: i * 48 + 74, y: 2, width: 40, height: 40))
+            let imageView = UIImageView(frame: CGRect(x: i * 75 + 55, y: 2, width: 40, height: 40))
             imageView.image = UIImage(named: guess[i])
             cell.contentView.addSubview(imageView)
         }
@@ -127,7 +121,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         // display feedback blobs
         for i in 0 ..< blobs.count {
-            let imageView = UIImageView(frame: CGRect(x: i / 2 * 18 + 266, y: i % 2 * 18 + 2, width: 20, height: 20))
+            let imageView = UIImageView(frame: CGRect(x: i / 2 * 18 + 328, y: i % 2 * 18 + 2, width: 20, height: 20))
             imageView.image = UIImage(named: blobs[i])
             cell.contentView.addSubview(imageView)
         }
@@ -147,37 +141,32 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         for _ in 0 ... 3 {
             generatedPattern.append(colours.randomElement()!)
         }
-        
-        // print generated pattern to console
-        for i in 0 ..< generatedPattern.count {
-            print(generatedPattern[i])
-        }
     }
     
     func updateInputSelection(delete: Bool) {
         // get input selection to delete or update
-        let selectionCount = delete ? selectionArray.count + 1 : selectionArray.count
+        let selectionCount = delete ? inputSelection.count + 1 : inputSelection.count
         
         // delete or update input selection image
         switch selectionCount {
             case 1:
-                firstSelection.image = delete ? nil : UIImage(named: selectionArray[selectionCount - 1])
+                firstSelection.image = delete ? nil : UIImage(named: inputSelection[selectionCount - 1])
             case 2:
-                secondSelection.image = delete ? nil : UIImage(named: selectionArray[selectionCount - 1])
+                secondSelection.image = delete ? nil : UIImage(named: inputSelection[selectionCount - 1])
             case 3:
-                thirdSelection.image = delete ? nil : UIImage(named: selectionArray[selectionCount - 1])
+                thirdSelection.image = delete ? nil : UIImage(named: inputSelection[selectionCount - 1])
             default:
-                fourthSelection.image = delete ? nil : UIImage(named: selectionArray[selectionCount - 1])
+                fourthSelection.image = delete ? nil : UIImage(named: inputSelection[selectionCount - 1])
         }
         updateButtonStates()
     }
     
     func updateButtonStates() {
         // enable delete button if there are colours selected
-        deleteButton.isEnabled = selectionArray.count == 0 ? false : true
+        deleteButton.isEnabled = inputSelection.count == 0 ? false : true
         
         // disable colour buttons and enable go button if 4 colours have been selected
-        if (selectionArray.count >= 4) {
+        if (inputSelection.count >= 4) {
             blueCircle.isEnabled = false
             greenCircle.isEnabled = false
             greyCircle.isEnabled = false
@@ -238,14 +227,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return false
     }
     
+    // scroll to the bottom of outputTable
     func scrollToBottom() {
-        // scrolls to the bottom of outputTable
         DispatchQueue.main.async {
             let indexPath = IndexPath(
                 row: self.outputTable.numberOfRows(inSection:  self.outputTable.numberOfSections - 1) - 1,
                 section: self.outputTable.numberOfSections - 1)
             self.outputTable.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
+    }
+    
+    // display alert with custom title and message
+    func displayAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "New Game", style: .default, handler: { action in self.newGame() }))
+        self.present(alert, animated: true)
     }
 }
 
