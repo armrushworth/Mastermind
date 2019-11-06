@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="akh-VK-3ZP">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
@@ -7,7 +7,52 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="cXC-NO-dGH">
+            <objects>
+                <navigationController id="akh-VK-3ZP" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Bfm-hj-c9h">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="V4W-hi-TAn" kind="relationship" relationship="rootViewController" id="f6H-mk-O0b"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hsD-ib-FO8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1367" y="139"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="e69-46-Fmy">
+            <objects>
+                <viewController id="V4W-hi-TAn" customClass="MenuViewController" customModule="Mastermind" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YL1-SH-lDi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sMr-2X-NgB">
+                                <rect key="frame" x="150" y="318" width="75" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="New Game"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="9Od-qP-u6M"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="BRm-1e-rdf"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Home" id="dMe-uD-jiz"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" id="mIO-H0-mMw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4An-rV-bKH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-663" y="139"/>
+        </scene>
+        <!--Mastermind-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Mastermind" customModuleProvider="target" sceneMemberID="viewController">
@@ -220,27 +265,19 @@
                                     <constraint firstAttribute="bottom" secondItem="8fj-5i-Y90" secondAttribute="bottom" id="x01-zv-Cox"/>
                                 </constraints>
                             </view>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gW-Wk-Dm0">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <items>
-                                    <navigationItem title="Mastermind" id="VA2-Xe-dOC"/>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="mPD-cv-x9q" firstAttribute="top" secondItem="GPf-lX-88a" secondAttribute="bottom" id="0FW-dk-bCu"/>
-                            <constraint firstItem="0gW-Wk-Dm0" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="7xb-eK-c9g"/>
                             <constraint firstItem="GPf-lX-88a" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="C5H-jz-IIn"/>
-                            <constraint firstItem="0gW-Wk-Dm0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Goa-6f-W7l"/>
-                            <constraint firstItem="0gW-Wk-Dm0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cpf-jt-UvO"/>
+                            <constraint firstItem="GPf-lX-88a" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Nlc-Nx-RRh"/>
                             <constraint firstItem="mPD-cv-x9q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dnJ-GN-TBX"/>
                             <constraint firstItem="mPD-cv-x9q" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="lIE-tL-qRq"/>
+                            <constraint firstItem="mPD-cv-x9q" firstAttribute="top" secondItem="GPf-lX-88a" secondAttribute="bottom" id="r7V-1k-gTk"/>
                             <constraint firstItem="mPD-cv-x9q" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="sqQ-ys-BeI"/>
-                            <constraint firstItem="GPf-lX-88a" firstAttribute="top" secondItem="0gW-Wk-Dm0" secondAttribute="bottom" id="tJ6-vH-YVm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Mastermind" id="LvN-i0-A4q"/>
                     <connections>
                         <outlet property="blueCircle" destination="O70-r7-1NF" id="fnY-4J-Yqc"/>
                         <outlet property="deleteButton" destination="b6b-yx-hdd" id="aCD-zA-wkw"/>
@@ -260,7 +297,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="138.98050974512745"/>
+            <point key="canvasLocation" x="38" y="139"/>
         </scene>
     </scenes>
     <resources>
@@ -272,4 +309,7 @@
         <image name="red" width="204" height="206"/>
         <image name="yellow" width="207" height="206"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="mIO-H0-mMw"/>
+    </inferredMetricsTieBreakers>
 </document>
