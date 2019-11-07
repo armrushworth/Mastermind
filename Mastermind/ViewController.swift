@@ -89,12 +89,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if (checkGuess()) {
             // increment wins and display congratulations alert if the genereated pattern was guessed correctly
-            UserDefaults.standard.set(wins + 1, forKey: "wins")
+            wins += 1
+            UserDefaults.standard.set(wins, forKey: "wins")
             displayAlert(title: "Congratulations", message: "You guessed the pattern after \(guesses.count) attempts.")
         } else {
             // increment losses and display unlucky alert if 10 or more incorrect guesses have been made
             if (guesses.count >= 10) {
-                UserDefaults.standard.set(losses + 1, forKey: "losses")
+                losses += 1
+                UserDefaults.standard.set(losses, forKey: "losses")
                 displayAlert(title: "Unlucky", message: "You have run out of guesses.")
             }
         }
