@@ -13,6 +13,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var inputSelection = [String]()
     var guesses = [[String]]()
     var feedback = [[Int]]()
+    var wins = Int()
+    var losses = Int()
     
     @IBOutlet weak var inputSelectionView: UIView!
     @IBOutlet weak var firstSelection: UIImageView!
@@ -86,11 +88,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         updateButtonStates()
         
         if (checkGuess()) {
-            // display congratulations alert if the genereated pattern was guessed correctly
+            // increment wins and display congratulations alert if the genereated pattern was guessed correctly
+            UserDefaults.standard.set(wins + 1, forKey: "wins")
             displayAlert(title: "Congratulations", message: "You guessed the pattern after \(guesses.count) attempts.")
         } else {
-            // display unlucky alert if 10 or more incorrect guesses have been made
+            // increment losses and display unlucky alert if 10 or more incorrect guesses have been made
             if (guesses.count >= 10) {
+                UserDefaults.standard.set(losses + 1, forKey: "losses")
                 displayAlert(title: "Unlucky", message: "You have run out of guesses.")
             }
         }

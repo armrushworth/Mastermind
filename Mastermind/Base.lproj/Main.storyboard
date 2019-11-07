@@ -36,7 +36,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="New Game"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="9Od-qP-u6M"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="toGame" id="9Od-qP-u6M"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mastermind" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7l-S9-zNo">
@@ -46,23 +46,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iEs-ZS-PQB">
-                                <rect key="frame" x="0.0" y="545" width="375" height="41"/>
+                                <rect key="frame" x="0.0" y="546" width="375" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="mQq-wg-Swf"/>
+                                </constraints>
                                 <string key="text">Wins: 0
 Losses: 0</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UlL-7z-5uv">
-                                <rect key="frame" x="138.5" y="516" width="98" height="21"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="14" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3F-4y-wME">
-                                <rect key="frame" x="37.5" y="111" width="300" height="397"/>
+                                <rect key="frame" x="37.5" y="111" width="300" height="284.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="397" id="V7L-bo-XTq"/>
                                     <constraint firstAttribute="width" constant="300" id="jNz-0b-IJQ"/>
                                 </constraints>
                                 <string key="text">The code maker has created a secret code. You may select any combination of 4 coloured circles in order to guess the secret code.
@@ -75,26 +71,32 @@ You have 10 attempts to guess the secret code.
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UlL-7z-5uv">
+                                <rect key="frame" x="138.5" y="517" width="98" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="y3F-4y-wME" firstAttribute="centerX" secondItem="YL1-SH-lDi" secondAttribute="centerX" id="38Q-VM-Hex"/>
-                            <constraint firstItem="iEs-ZS-PQB" firstAttribute="trailing" secondItem="BRm-1e-rdf" secondAttribute="trailing" id="9sO-85-cRz"/>
+                            <constraint firstItem="sMr-2X-NgB" firstAttribute="top" secondItem="iEs-ZS-PQB" secondAttribute="bottom" constant="8" id="Bdv-W0-8fv"/>
                             <constraint firstItem="y3F-4y-wME" firstAttribute="top" secondItem="e7l-S9-zNo" secondAttribute="bottom" constant="8" id="By0-kp-IzA"/>
-                            <constraint firstItem="sMr-2X-NgB" firstAttribute="top" secondItem="iEs-ZS-PQB" secondAttribute="bottom" constant="20" id="CUc-gH-S6s"/>
                             <constraint firstItem="sMr-2X-NgB" firstAttribute="centerX" secondItem="YL1-SH-lDi" secondAttribute="centerX" id="IIZ-mQ-UTy"/>
+                            <constraint firstItem="iEs-ZS-PQB" firstAttribute="trailing" secondItem="BRm-1e-rdf" secondAttribute="trailing" id="Ixk-Jn-IwA"/>
                             <constraint firstItem="e7l-S9-zNo" firstAttribute="top" secondItem="BRm-1e-rdf" secondAttribute="top" constant="18" id="JLW-n7-5rT"/>
                             <constraint firstItem="UlL-7z-5uv" firstAttribute="centerX" secondItem="YL1-SH-lDi" secondAttribute="centerX" id="Raq-uA-9dv"/>
                             <constraint firstItem="BRm-1e-rdf" firstAttribute="bottom" secondItem="sMr-2X-NgB" secondAttribute="bottom" constant="20" id="UpW-lv-b1b"/>
-                            <constraint firstItem="iEs-ZS-PQB" firstAttribute="top" secondItem="UlL-7z-5uv" secondAttribute="bottom" constant="8" id="ViV-CJ-r96"/>
-                            <constraint firstItem="iEs-ZS-PQB" firstAttribute="leading" secondItem="BRm-1e-rdf" secondAttribute="leading" id="fIO-mF-Djo"/>
-                            <constraint firstItem="UlL-7z-5uv" firstAttribute="top" secondItem="y3F-4y-wME" secondAttribute="bottom" constant="8" id="gvj-rL-egt"/>
+                            <constraint firstItem="iEs-ZS-PQB" firstAttribute="top" secondItem="UlL-7z-5uv" secondAttribute="bottom" constant="8" id="kKG-NH-9pk"/>
                             <constraint firstItem="e7l-S9-zNo" firstAttribute="centerX" secondItem="YL1-SH-lDi" secondAttribute="centerX" id="nWj-rx-tpu"/>
+                            <constraint firstItem="iEs-ZS-PQB" firstAttribute="leading" secondItem="BRm-1e-rdf" secondAttribute="leading" id="qc8-1O-iJM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BRm-1e-rdf"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="dMe-uD-jiz"/>
                     <connections>
+                        <outlet property="recordLabel" destination="iEs-ZS-PQB" id="h6g-0D-OdJ"/>
                         <segue destination="BYZ-38-t0r" kind="show" id="mIO-H0-mMw"/>
                     </connections>
                 </viewController>
@@ -360,6 +362,6 @@ You have 10 attempts to guess the secret code.
         <image name="yellow" width="207" height="206"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mIO-H0-mMw"/>
+        <segue reference="9Od-qP-u6M"/>
     </inferredMetricsTieBreakers>
 </document>
