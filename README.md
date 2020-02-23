@@ -1,4 +1,4 @@
-# COMP228/327 Assignment 1 w/c 21st October 2019
+# COMP327 Assignment 1 - 98%
 
 ### Developing a Mobile App based on the Mastermind game.
 
@@ -26,15 +26,3 @@ The App will play a version of the game Mastermind (see https://en.wikipedia.org
 5. Use a persistent storage mechanism to save the number of games won by the code-maker and by the player, so that on starting the app, a count of the games won and lost can be viewed. **(worth 10%)**
 6. The app must work in portrait orientation, on both an iPhone 8, and an iPad (e.g. iPad Pro 9.7”), maintaining a sensible UI in both **(worth 10%)**
 7. Please ensure that your code is appropriately commented and meaningful variable and constant names are used. **(worth 5%)**
-
-### Important - Please note:
-
-Do not use any third-party frameworks in your App (e.g. Alamofire). Use Apple standard frameworks ONLY (i.e. only frameworks provided with Xcode 11). Use of third-party frameworks will involve a **penalty of 10%**.
-
-### What to Submit
-
-Your completed project should be zipped up and submitted via the online submission system. (Right click the icon for the folder containing the project file and folder and choose “Compress”) Also submit a short informal document (1-2 sides of A4 at most) documenting how to use your app, and indicating any notable features.
-
-### Deadline for submission: Monday November 11th 2019 at 13:00
-
-Reminder: This is the first of two assignments, each of which is worth 15% of the total mark for COMP228 / COMP327. Your portfolio of lab work will be worth another 10%.
